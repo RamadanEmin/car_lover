@@ -1,6 +1,14 @@
-import { Hero } from "@/components";
+'use client';
+
+import { useState } from 'react';
+
+import { CustomFilter, Hero, SearchBar } from "@/components";
+import { fuels, yearsOfProduction } from '@/constants';
 
 export default function Home() {
+    const [manufacturer, setManufacturer] = useState('');
+    const [model, setModel] = useState('');
+
     return (
         <main className="overflow-hidden">
              <Hero />
@@ -12,11 +20,11 @@ export default function Home() {
                 </div>
 
                 <div className="home__filters">
-                    <SearchBar />
+                    <SearchBar setManufacturer={setManufacturer} setModel={setModel} />
 
                     <div className="home__filter-container">
-                        <CustomFilter />
-                        <CustomFilter />
+                        <CustomFilter title="fuel" options={fuels} setFilter={setFuel} />
+                        <CustomFilter title="year" options={yearsOfProduction} setFilter={setYear} />
                     </div>
                 </div>
             </div>
