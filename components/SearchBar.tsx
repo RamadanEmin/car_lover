@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
+import SearchManufacturer from "./SearchManufacturer";
+
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
     <button type='submit' className={`-ml-3 z-10 ${otherClasses}`}>
         <Image
@@ -36,7 +38,10 @@ const SearchBar = ({setManufacturer, setModel}) => {
     return (
         <form className="searchbar" onSubmit={handleSearch}>
             <div className="searchbar__item">
-                <SearchManufacturer />
+                <SearchManufacturer
+                    selected={searchManufacturer}
+                    setSelected={setSearchManufacturer}
+                />
 
                 <SearchButton otherClasses="sm:hidden" />
             </div>
