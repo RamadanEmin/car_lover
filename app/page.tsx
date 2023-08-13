@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import { CustomFilter, Hero, SearchBar } from '@/components';
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from '@/components';
 import { fuels, yearsOfProduction } from '@/constants';
 import { fetchCars } from '@/utils';
 
@@ -66,7 +66,7 @@ export default function Home() {
                     <section>
                         <div className="home__cars-wrapper">
                             {allCars?.map((car) => (
-                                <CarCard />
+                                <CarCard car={car} />
                             ))}
                         </div>
 
@@ -81,6 +81,12 @@ export default function Home() {
                                 />
                             </div>
                         )}
+
+                        <ShowMore
+                            pageNumber={limit / 10}
+                            isNext={limit > allCars.length}
+                            setLimit={setLimit}
+                        />
 
                     </section>
                 ) : (
